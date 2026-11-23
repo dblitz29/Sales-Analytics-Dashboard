@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="Kiro">
+  <diagram name="Architecture" id="dua-kelinci-architecture">
+    <mxGraphModel dx="1776" dy="1079" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;arcSize=8;verticalAlign=middle;" value="Data Source&#xa;&#xa;sales.csv&#xa;(1,891 records)" vertex="1">
+          <mxGeometry height="110" width="190" x="40" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=13;arcSize=8;verticalAlign=middle;" value="Data Processing&#xa;(data.py)&#xa;&#xa;CSV loading → validation →&#xa;cleaning → region normalization" vertex="1">
+          <mxGeometry height="130" width="220" x="290" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;arcSize=8;verticalAlign=middle;" value="Analytics Engine&#xa;(metrics.py)&#xa;&#xa;Sales by region · Sales by brand&#xa;Weakest 5 outlets (by outlet_id)&#xa;KPI figures" vertex="1">
+          <mxGeometry height="150" width="230" x="560" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="n4group" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;verticalAlign=top;align=center;arcSize=6;" value="Sales Manager Brief (summary.py)" vertex="1">
+          <mxGeometry height="250" width="260" x="840" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="n4ai" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=12;" value="OpenAI API&#xa;AI-generated summary" vertex="1">
+          <mxGeometry height="55" width="210" x="865" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="n4fallback" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" value="Template fallback&#xa;(used if no API key, or the API call fails)" vertex="1">
+          <mxGeometry height="55" width="210" x="865" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="n4final" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=12;fontStyle=1;" value="Final summary text" vertex="1">
+          <mxGeometry height="45" width="140" x="900" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=13;arcSize=8;verticalAlign=middle;" value="Dashboard (app.py — Streamlit)&#xa;&#xa;Sales by region / brand charts&#xa;Weakest 5 outlets table&#xa;Sales Manager Brief + copyable summary" vertex="1">
+          <mxGeometry height="150" width="250" x="1140" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="n1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="n2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="n3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.3;" target="n4group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="n4group" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="n4ai" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=10;" target="n4fallback" value="no key / error">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="n4ai" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="n4final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="n4fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" target="n4final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

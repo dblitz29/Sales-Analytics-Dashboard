@@ -1,0 +1,28 @@
+# Environment / secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local run logs / scratch files
+streamlit_check*.txt
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# draw.io lock/backup files
+docs/.$*.bkp
+
+# Dev-only planning docs (kept locally, not part of the submitted repo)
+requirements.md
+solution_design.md
+implementation_plan.md
